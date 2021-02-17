@@ -1,1 +1,9 @@
-{}
+{
+  "function": {
+    "cryptoapp680bbadb": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  }
+}
