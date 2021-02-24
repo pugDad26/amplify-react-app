@@ -12,7 +12,7 @@ export const GitHubBornOn = async () => {
     const [createdOn, showCreationDate] = useState("");
 
     //Function that will call API get/born
-    const fetchGitHubCreationDate = () => {
+    const fetchGitHubCreationDate = async () => {
         try {
             //Try to get the data from the API endpoint /born
             const data = await API.get('api9bc74a79', '/born');
