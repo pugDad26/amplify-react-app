@@ -28,10 +28,11 @@ export const GitHubBornOn = () => {
         () => {
             fetchGitHubCreationDate();
         }
+        ,[]
     );
     return(
         <h2>
-            my github name goes here - my github created at goes here {createdOn.created_at}
+            my github name goes here - my github created at goes here {createdOn}
         </h2>
     );
 };
