@@ -26,6 +26,23 @@ const App = () => {
     updateLoading(false);
   }
 
+// without async and await
+  // const fetchCoins = () => {
+  //   updateLoading(true);
+
+  //   const { limit, start } = input
+
+  //   API.get('api9bc74a79', `/coins?limit=${limit}&start=${start}`)
+  //   .then(response => {
+  //     updateCoins(response.coins);
+  //     updateLoading(false);
+  //   })
+  //   .catch(err => console.error(err))
+  //   ;
+
+  //   //updateLoading(false);
+  // }
+
   // Call fetchCoins function when component loads
   useEffect(() => {
     fetchCoins()
