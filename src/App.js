@@ -6,6 +6,7 @@ import { API } from 'aws-amplify'
 import './App.css';
 import logo from './logo.svg';
 import './App.css';
+import { GitHubBornOn } from './GitHubBornOn';
 
 const App = () => {
   // Create coins variable and set to empty array
@@ -60,6 +61,7 @@ const App = () => {
 const [loading, updateLoading] = useState(true);
 
   return (
+    <>
     <div className="App">
 
       {/* // Add input fields to the UI for user input */}
@@ -89,6 +91,8 @@ const [loading, updateLoading] = useState(true);
         ))
       }
     </div>
+    <GitHubBornOn/>
+    </>
   );
 }
 

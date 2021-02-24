@@ -51,6 +51,24 @@ app.get('/coins', function(req, res) {
     .catch(err => res.json({ error: err }))
 })
 
+  //Function for project 3
+  app.get(
+    '/born'
+    , (req, res) => {
+      axios.get("https://api.github.com/users/pugDad26")
+        .then(
+          response => {
+            res.json({  
+              borninfo: response.data 
+            });
+        })
+        .catch(
+          err => res.json({ error: err })
+        );
+    } 
+  );
+
+
 app.get('/item', function(req, res) {
   // Add your code here
   res.json({success: 'get call succeed!', url: req.url});
