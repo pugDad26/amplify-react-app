@@ -12,15 +12,27 @@ const App = () => {
   const [coins, updateCoins] = useState([]);
 
   // Define function to all API
-  async function fetchCoins() {
-    const data = await API.get('api9bc74a79', '/coins');
-    updateCoins(data.coins);
-  };
+
+  // Update fetchCoins function to use limit and start properties
+  const fetchCoins = async () => {
+    const { limit, start } = input
+    const data = await API.get('api9bc74a79', `/coins?limit=${limit}&start=${start}`)
+    updateCoins(data.coins)
+  }
 
   // Call fetchCoins function when component loads
   useEffect(() => {
     fetchCoins()
   }, [])
+
+
+  // Create additional state to hold user input for limit and start properties
+  const [input, updateInput] = useState({ limit: 5, start: 0 });
+
+// Create a new function to allow users to update the input values
+  const updateInputValues = (type, value) => {
+    updateInput({ ...input, [type]: value });
+};
 
   return (
     <div className="App">
