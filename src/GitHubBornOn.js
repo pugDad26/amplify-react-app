@@ -16,14 +16,23 @@ export const GitHubBornOn = async () => {
         try {
             //Try to get the data from the API endpoint /born
             const data = await API.get('api9bc74a79', '/born');
+            showCreationDate(data.createOn);
         }
         catch(err) {
             console.error(err);
         }
-    }
+    };
+
+    //Call fetchGitHubCreationDate when component loads
+    useEffect(
+        () => {
+            fetchGitHubCreationDate();
+        }
+        ,[]
+    );
     return(
         <h2>
-            my github name goes here - my github created at goes here
+            my github name goes here - my github created at goes here{createdOn}
         </h2>
     );
 };
