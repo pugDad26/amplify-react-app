@@ -6,7 +6,7 @@ import React
     }
 from 'react';
 
-export const GitHubBornOn = async () => {
+export const GitHubBornOn = () => {
 
     //Variable to hold github creation date
     const [createdOn, showCreationDate] = useState("");
@@ -16,7 +16,7 @@ export const GitHubBornOn = async () => {
         try {
             //Try to get the data from the API endpoint /born
             const data = await API.get('api9bc74a79', '/born');
-            showCreationDate(data.createOn);
+            showCreationDate(data.createdOn);
         }
         catch(err) {
             console.error(err);
@@ -28,11 +28,10 @@ export const GitHubBornOn = async () => {
         () => {
             fetchGitHubCreationDate();
         }
-        ,[]
     );
     return(
         <h2>
-            my github name goes here - my github created at goes here{createdOn}
+            my github name goes here - my github created at goes here {createdOn.created_at}
         </h2>
     );
 };
