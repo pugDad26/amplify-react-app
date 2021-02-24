@@ -22,6 +22,8 @@ const App = () => {
     const { limit, start } = input
     const data = await API.get('api9bc74a79', `/coins?limit=${limit}&start=${start}`);
     updateCoins(data.coins);
+
+    updateLoading(false);
   }
 
   // Call fetchCoins function when component loads
