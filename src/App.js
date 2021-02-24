@@ -9,15 +9,19 @@ import './App.css';
 
 const App = () => {
   // Create coins variable and set to empty array
+  
   const [coins, updateCoins] = useState([]);
 
   // Define function to all API
 
   // Update fetchCoins function to use limit and start properties
   const fetchCoins = async () => {
+
+    updateLoading(true);
+
     const { limit, start } = input
-    const data = await API.get('api9bc74a79', `/coins?limit=${limit}&start=${start}`)
-    updateCoins(data.coins)
+    const data = await API.get('api9bc74a79', `/coins?limit=${limit}&start=${start}`);
+    updateCoins(data.coins);
   }
 
   // Call fetchCoins function when component loads
@@ -33,6 +37,8 @@ const App = () => {
   const updateInputValues = (type, value) => {
     updateInput({ ...input, [type]: value });
 };
+
+const [loading, updateLoading] = useState(true);
 
   return (
     <div className="App">
@@ -51,8 +57,12 @@ const App = () => {
       {/* // Add button to the UI to give user the option to call the API */}
       <button onClick={fetchCoins}>Fetch Coins</button>
 
+
+      {loading && <h2>Loading...</h2>}
       {
+
         coins.map((coin, index) => (
+          !loading &&
           <div key={index}>
             <h2>{coin.name} - {coin.symbol}</h2>
             <h5>${coin.price_usd}</h5>
