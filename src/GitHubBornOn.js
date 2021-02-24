@@ -15,7 +15,7 @@ export const GitHubBornOn = async () => {
     const fetchGitHubCreationDate = () => {
         try {
             //Try to get the data from the API endpoint /born
-            const data = await API.get('', '/born');
+            const data = await API.get('api9bc74a79', '/born');
         }
         catch(err) {
             console.error(err);
