@@ -1,14 +1,13 @@
+import { API } from 'aws-amplify';
 import React
     ,{
         useState
         , useEffect
     } from 'react';
 
-import { API } from 'aws-amplify';
-
 export const GitHubBornOn = () => {
 
-    const fetchData = async () => {
+    const getData = async () => {
         try {
             const data = await API.get("api9bc74a79", "/born");
             showInfo(data.borninfo);
@@ -20,7 +19,7 @@ export const GitHubBornOn = () => {
 
     useEffect(
         () => {
-            fetchData();
+            getData();
         }
         , []
     );
