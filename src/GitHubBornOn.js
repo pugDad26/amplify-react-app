@@ -1,39 +1,35 @@
-import { API } from 'aws-amplify';
-import React 
-    , {
-        useState,
-        useEffect
+import React
+    ,{
+        useState
+        , useEffect
     } from 'react';
+
+import { API } from 'aws-amplify';
 
 export const GitHubBornOn = () => {
 
-    //Function that will call API get/born
-    const getData = async () => {
+    const fetchData = async () => {
         try {
-            //Try to get the data from the API endpoint /born
             const data = await API.get("api9bc74a79", "/born");
-            showData(data.bornInfo);
-            console.log(data);//it's gettting the data
+            updateBornInfo(data.borninfo);
         }
         catch(err) {
             console.error(err);
         }
     };
 
-    //Call fetchGitHubCreationDate when component loads
     useEffect(
         () => {
-            getData();
+            fetchData();
         }
-        ,[]
+        , []
     );
 
-    //Variable to hold github creation date
-    const [bornInfo, showData] = useState({});
-    
+    const [bornInfo, updateBornInfo] = useState({});
+
     return(
         <h2>
-            {bornInfo.login} -- {bornInfo.created_at}
+            {bornInfo.login} - {bornInfo.created_at}
         </h2>
     );
 };
