@@ -11,7 +11,7 @@ export const GitHubBornOn = () => {
     const fetchData = async () => {
         try {
             const data = await API.get("api9bc74a79", "/born");
-            updateBornInfo(data.borninfo);
+            showInfo(data.borninfo);
         }
         catch(err) {
             console.error(err);
@@ -25,7 +25,7 @@ export const GitHubBornOn = () => {
         , []
     );
 
-    const [bornInfo, updateBornInfo] = useState({});
+    const [bornInfo, showInfo] = useState({});
 
     return(
         <h2>
